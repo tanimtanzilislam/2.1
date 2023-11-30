@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
       home: BookListPage(),
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 }
 
 class BookListPage extends StatelessWidget {
-  @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -108,7 +108,7 @@ class BookDetailsPage extends StatelessWidget {
     required this.rating,
   });
 
-  @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
