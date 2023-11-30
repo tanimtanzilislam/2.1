@@ -1,0 +1,162 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: BookListPage(),
+    );
+  }
+}
+
+class BookListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Book List'),
+      ),
+      body: ListView(
+        children: [
+          ClickableBookCard(
+            bookName: 'Sample Book 1',
+            authorName: 'Author 1',
+            rating: 4.5,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookDetailsPage(
+                    bookName: 'Sample Book 1',
+                    authorName: 'Author 1',
+                    rating: 4.5,
+                  ),
+                ),
+              );
+            },
+          ),
+          ClickableBookCard(
+            bookName: 'Sample Book 2',
+            authorName: 'Author 2',
+            rating: 3.8,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookDetailsPage(
+                    bookName: 'Sample Book 2',
+                    authorName: 'Author 2',
+                    rating: 3.8,
+                  ),
+                ),
+              );
+            },
+          ),
+          
+        ],
+      ),
+    );
+  }
+}
+
+class ClickableBookCard extends StatelessWidget {
+  final String bookName;
+  final String authorName;
+  final double rating;
+  final VoidCallback onPressed;
+
+  ClickableBookCard({
+    required this.bookName,
+    required this.authorName,
+    required this.rating,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Card(
+        child: ListTile(
+          leading: Image.network('https://example.com/book_cover.jpg'), // Replace with actual image URL
+          title: Text(bookName),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(authorName),
+              Text('Rating: $rating'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BookDetailsPage extends StatelessWidget {
+  final String bookName;
+  final String authorName;
+  final double rating;
+
+  BookDetailsPage({
+    required this.bookName,
+    required this.authorName,
+    required this.rating,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Book Details'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Book Name: $bookName',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Image.network('https://example.com/book_cover.jpg'), // Replace with actual image URL
+            SizedBox(height: 16),
+            Text('Author Name: $authorName'),
+            SizedBox(height: 8),
+            Text('Short Description goes here...'),
+            SizedBox(height: 16),
+            DropdownButton<String>(
+              // Implement your dropdown options and logic here
+              items: [
+                DropdownMenuItem(
+                  value: 'Option 1',
+                  child: Text('Option 1'),
+                ),
+                DropdownMenuItem(
+                  value: 'Option 2',
+                  child: Text('Option 2'),
+                ),
+                
+              ],
+              onChanged: (value) {
+                
+              },
+            ),
+            Spacer(),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Go Back'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
