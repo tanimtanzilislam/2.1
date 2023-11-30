@@ -82,7 +82,7 @@ class ClickableBookCard extends StatelessWidget {
       onTap: onPressed,
       child: Card(
         child: ListTile(
-          leading: Image.network('https://example.com/book_cover.jpg'), // Replace with actual image URL
+          leading: Image.network('https://www.dreamstime.com/photos-images/blue-color.html'),
           title: Text(bookName),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +124,7 @@ class BookDetailsPage extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
-            Image.network('https://example.com/book_cover.jpg'), // Replace with actual image URL
+            Image.network('https://images.app.goo.gl/wyNqYZbmrDLvBKvr7'), 
             SizedBox(height: 16),
             Text('Author Name: $authorName'),
             SizedBox(height: 8),
